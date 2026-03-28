@@ -103,9 +103,9 @@ impl SnakeGame {
 
     pub fn draw(&mut self, display: &mut Display) {
         // DRAW GAME FRAME
-        display.set_area_char(0, 0, 44, 22, '█');
+        display.set_area_char(0, 0, 44, 23, '█');
         display.set_area_char(0, 0, 44, 1, '▄');
-        display.set_area_char(0, 22, 44, 1, '▀');
+        display.set_area_char(0, 23, 44, 1, '▀');
         display.set_area_fg(0, 0, 44, 24, Color::Rgb{ r: 99, g: 159, b: 195 });
 
         self.board.draw(display);
