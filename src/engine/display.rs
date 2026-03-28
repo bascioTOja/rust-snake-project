@@ -34,9 +34,10 @@ impl Drop for Display {
 #[allow(dead_code)]
 impl Display {
     pub fn new() -> Self {
-        let size = terminal::window_size().unwrap();
-        let width = (size.columns) as usize;
-        let height = (size.rows) as usize;
+        let size = terminal::size().unwrap();
+        let width = (size.0) as usize;
+        let height = (size.1) as usize;
+
         Self {
             width: width,
             height: height,
@@ -82,10 +83,9 @@ impl Display {
     }
 
     pub fn resize_check(&mut self) {
-        let size = terminal::window_size().unwrap();
-
-        let width = (size.columns) as usize;
-        let height = (size.rows) as usize;
+        let size = terminal::size().unwrap();
+        let width = (size.0) as usize;
+        let height = (size.1) as usize;
 
         if width != self.width || height != self.height {
             self.resize();
@@ -93,10 +93,9 @@ impl Display {
     }
 
     fn resize(&mut self) {
-        let size = terminal::window_size().unwrap();
-
-        self.width = (size.columns) as usize;
-        self.height = (size.rows) as usize;
+        let size = terminal::size().unwrap();
+        self.width = (size.0) as usize;
+        self.height = (size.1) as usize;
 
         let template = PixelChar {
             character: ' ',
