@@ -1,10 +1,12 @@
 #![allow(unused)]
 mod engine;
 mod tetris;
+mod snake;
 
 use std::panic;
 
-use crate::engine::GameEngine;
+use crate::engine::{GameEngine, ScreenTester};
+use crate::snake::SnakeGame;
 use crate::tetris::TetrisGame;
 
 pub fn install_panic_hook() {
@@ -24,8 +26,9 @@ fn main() -> std::io::Result<()> {
     install_panic_hook();
     let mut engine = GameEngine::new();
     engine.debug.toggle_debug(true);
-    engine.add_object(Box::new(TetrisGame::new()));
-    // engine.add_object(Box::new(RainbowGoBrr::new()));
+    // engine.add_object(Box::new(TetrisGame::new()));
+    engine.add_object(Box::new(SnakeGame::new()));
+    // engine.add_object(Box::new(ScreenTester::new()));
     engine.run()?;
     Ok(())
 }

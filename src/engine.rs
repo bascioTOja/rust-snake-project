@@ -3,12 +3,15 @@ mod display;
 mod fps_smoother;
 mod input_state;
 
+mod screen_tester;
+
 use std::time::{Duration, Instant};
 
 pub use debug::{Debug, LogType};
 pub use display::Display;
 pub use fps_smoother::FpsSmoother;
 pub use input_state::InputState;
+pub use screen_tester::ScreenTester;
 
 use crossterm::{
     event::{self, Event, KeyCode, KeyEvent, KeyModifiers},
